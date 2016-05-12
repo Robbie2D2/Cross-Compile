@@ -1,3 +1,6 @@
+José Roberto Guerrero Zurita
+Diplomado Linux en Sistemas Embebidos
+
 #Compilación Cruzada
 
 La compilación cruzada consiste en compilar código en una plataforma distinta a la que se ejecutará.
