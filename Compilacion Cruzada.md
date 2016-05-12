@@ -32,7 +32,6 @@ Para compilar el Secondary Program Loader y el U-Boot primero me baje el reposit
 Para hacer la compilación cruzada instalé el toolchain arm-linux-gnueabihf-4.8 por lo que se hizo un soft link para que `make` pudiera llamarlo como arm-linux-gnueabihf-gcc.  
 
 
-<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/cross.jpg/>
 ![cross](img/cross.jpg "Compilacion cruzada")
 
 Se requieren de las siguientes herramientas para compilar u-boot y generar el zImage del kernel.  
@@ -73,13 +72,13 @@ make imx_v7_cbi_hb_defconfig
 make ARCH=arm menuconfig
 ```
 Este último comando genera un menu de Kconfig para cambiar las configuraciones de compilación del kernel. Para la compilación le hice cambios para agregar módulos para el VPU, IPU y VGA, al igual para la cámara por el puerto MIPI CSI2 y soporte para pantallas pequeñas TFT.  
-<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/Drivers%20tft.jpg/>
+
 ![img1](img/Drivers tft.jpg "Drivers TFT")
-<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/MXC%20camera.jpg/>
+
 ![img2](img/MXC camera.jpg "Drivers Camara")
-<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/V4L%20platform%20drivers.jpg/>
+
 ![img3](img/V4L platform drivers.jpg "Drivers V4L")
-<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/mipi%20cs2.jpg/>
+
 ![img4](img/mipi cs2.jpg "Drivers MIPI")
 
 ##Compilar Kernel y Device Tree Blob de la Hummingboard
@@ -111,7 +110,7 @@ mmcargs=setenv bootargs video=mxcfb0:dev=hdmi,1920x1080M@60,if=RGB24,bpp=32 cons
 
 Al prender la Hummingboard se inicia la pantalla de u-boot y se deja iniciar. Al final aparece lo siguiente en la pantalla:  
 
-<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/IMG_4528.JPG/>
+
 ![Resultado](img/IMG_4528.JPG "Resultado")
 
 
