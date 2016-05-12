@@ -68,7 +68,11 @@ Para generar el .config por defecto de la Hummingboard se hacen los siguientes c
 make imx_v7_cbi_hb_defconfig
 make ARCH=arm menuconfig
 ```
-Este último comando genera un menu de Kconfig para cambiar las configuraciones de compilación del kernel. Para la compilación le hice cambios para agregar módulos para el VPU, IPU y VGA, al igual para la cámara por el puerto MIPI CSI2 y soporte para pantallas pequeñas TFT.   
+Este último comando genera un menu de Kconfig para cambiar las configuraciones de compilación del kernel. Para la compilación le hice cambios para agregar módulos para el VPU, IPU y VGA, al igual para la cámara por el puerto MIPI CSI2 y soporte para pantallas pequeñas TFT.
+<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/Drivers%20tft.jpg/>
+<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/MXC%20camera.jpg/>
+<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/V4L%20platform%20drivers.jpg/>
+<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/mipi%20cs2.jpg/>
 
 ##Compilar Kernel y Device Tree Blob de la Hummingboard
 La siguiente instrucción indica a make a compilar el kernel y guardarlo en el archivo comprimido zImage, al igual que los Device Tree Blobs para la HummingBoard. Los .dtb le indican al kernel de Linux el hardware que posee el SoC i.MX6 de Freescale.   
@@ -97,8 +101,9 @@ mmcargs=setenv bootargs video=mxcfb0:dev=hdmi,1920x1080M@60,if=RGB24,bpp=32 cons
 ```
 ##Resultados
 
-Al prender la Hummingboard se inicia la pantalla de u-boot y se deja iniciar. Al final aparece lo siguiente en la pantalla:  
+Al prender la Hummingboard se inicia la pantalla de u-boot y se deja iniciar. Al final aparece lo siguiente en la pantalla: 
 
+<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/IMG_4528.JPG/>
 
 
 
