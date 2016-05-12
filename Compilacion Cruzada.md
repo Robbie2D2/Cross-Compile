@@ -28,9 +28,10 @@ Para compilar el Secondary Program Loader y el U-Boot primero me baje el reposit
 
 Para hacer la compilación cruzada instalé el toolchain arm-linux-gnueabihf-4.8 por lo que se hizo un soft link para que `make` pudiera llamarlo como arm-linux-gnueabihf-gcc.  
 
-//imagen
 
-Se requieren de las siguientes herramientas para compilar u-boot y generar el zImage del kernel.
+<IMG src=https://github.com/Robbie2D2/Cross-Compile/blob/master/img/cross.jpg/>
+
+Se requieren de las siguientes herramientas para compilar u-boot y generar el zImage del kernel.  
 
 ```
 sudo apt-get install u-boot-tools
