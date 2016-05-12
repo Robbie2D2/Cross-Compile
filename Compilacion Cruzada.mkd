@@ -1,0 +1,83 @@
+#Compilación Cruzada
+
+La compilación cruzada consiste en compilar código en una plataforma distinta a la que se ejecutará.
+
+Para la siguiente tarea es necesario:
+*Código de Kernel de Linux
+*Código de SPL y U-Boot
+*Compilador cruzado
+*Variables de entorno
+*Compilar SPL y U-Boot
+*Configuración .config
+*Compilar Kernel y Device Tree Blob de la Hummingboard
+*Compilar módulos e instalar
+*Integración y Resultados
+
+
+##Código de Kernel de Linux
+
+Para compilar para la plataforma Hummingboard de Solid Run primero me baje el repositorio del código fuente del kernel de Solid Run con el siguiente comando en terminal:
+`git clone https://github.com/SolidRun/linux-fslc.git`
+
+##Código de SPL y U-Boot
+Para compilar el Secondary Program Loader y el U-Boot primero me baje el repositorio del código fuente para la versión de Solid Run con el siguiente comando en terminal:  
+`git clone https://github.com/SolidRun/u-boot-imx6.git`
+
+
+##Compilador cruzado
+
+Para hacer la compilación cruzada instalé el gcc arm-linux-gnueabihf-4.8 por lo que se hizo un soft link para que make pudiera llamarlo como arm-linux-gnueabihf-gcc.
+
+
+sudo apt-get install u-boot-tools
+sudo apt-get install lzop
+
+##Variables de Entorno
+
+Para la compilación cruzada es necesario configurar las variables de entorno de la terminal usando los comandos export:
+```
+export ARCH=arm
+export CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf-
+
+```
+
+##Compilar SPL y U-Boot
+
+```
+cd u-boot-imx6
+make mx6_cubox-i_config
+make
+```
+Esto genera el archivo SPL (Secondary Program Launcher) y el u-boot.img.
+
+##Configuración .config
+
+Para generar el .config por defecto de la Hummingboard se hacen los siguientes comandos en terminal:
+```
+make imx_v7_cbi_hb_defconfig
+make ARCH=arm menuconfig
+```
+
+##Compilar Kernel y Device Tree Blob de la Hummingboard
+
+
+```
+make zImage imx6q-cubox-i.dtb imx6dl-cubox-i.dtb imx6dl-hummingboard.dtb imx6q-hummingboard.dtb
+```
+
+##Compilar módulos e instalar
+
+```
+make modules
+```
+```
+make modules_install INSTALL_MOD_PATH=(dirección donde este montada la sdX Ej. ~/rootfs)
+```
+
+##Integración y Resultados
+
+```
+sudo dd if=SPL of=/dev/sdX bs=1K seek=1
+sudo dd if=u-image.img of=/dev/sdX bs=1K seek=42
+```
+
