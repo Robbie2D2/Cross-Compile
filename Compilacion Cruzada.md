@@ -1,4 +1,4 @@
-José Roberto Guerrero Zurita
+José Roberto Guerrero Zurita  
 Diplomado Linux en Sistemas Embebidos
 
 #Compilación Cruzada
